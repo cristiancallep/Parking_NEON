@@ -1,303 +1,153 @@
-/* VARIABLES NEÓN (Reutilizadas del Dashboard) */
-:root {
-    --bg-dark: #16213e; 
-    --electric-blue: #00ffff; 
-    --magenta-neon: #ff00ff; 
-    --text-light: #f0f0f0;
-    --text-general: #ccc;
-    
-    --shadow-electric: 0 0 5px var(--electric-blue), 0 0 15px var(--electric-blue);
-    --shadow-magenta: 0 0 5px var(--magenta-neon), 0 0 15px var(--magenta-neon);
-}
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@900&display=swap');
 
-/* BASE */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial',monospace;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-general);
-    margin: 0;
-    padding: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
     min-height: 100vh;
-    /* Fondo que simula la estética futurista/rejillas */
-    background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%), 
-                      repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.05), rgba(0, 0, 0, 0.6) 1px, transparent 1px, transparent 100px), 
-                      repeating-linear-gradient(90deg, rgba(255, 0, 255, 0.05), rgba(0, 0, 0, 0.6) 1px, transparent 1px, transparent 100px);
+    font-family: 'Saira Condensed', sans-serif;
 }
 
-/* HEADER Y NAVEGACIÓN */
-.header-landing {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 15px 40px;
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(0, 255, 255, 0.3);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    backdrop-filter: blur(5px); /* Efecto cristal para el fondo futurista */
+    padding: 1rem 2rem;
+    background: rgba(10, 15, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(0, 255, 255, 0.1);
 }
 
-.neon-logo {
-    color: var(--electric-blue);
-    text-shadow: var(--shadow-electric);
-    letter-spacing: 2px;
-    margin: 0;
-    font-size: 1.8em;
-}
-
-.nav-links .nav-item {
-    color: var(--text-general);
-    text-decoration: none;
-    margin-left: 20px;
-    transition: color 0.3s;
-}
-
-.nav-links .nav-item:hover {
-    color: var(--electric-blue);
-    text-shadow: 0 0 5px var(--electric-blue);
-}
-
-.header-actions {
-    display: flex;
-    gap: 10px;
-}
-
-/* ESTILOS DE BOTONES (Reutilizados del Dashboard) */
-.neon-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    text-decoration: none; /* Para usarlo en etiquetas <a> */
-}
-
-.neon-btn.primary {
-    background: var(--electric-blue);
-    color: var(--bg-dark);
-    box-shadow: var(--shadow-electric);
-}
-
-.neon-btn.secondary {
-    background: transparent;
-    color: var(--magenta-neon);
-    border: 2px solid var(--magenta-neon);
-    box-shadow: var(--shadow-magenta);
-}
-
-.neon-btn.primary:hover {
-    box-shadow: 0 0 15px var(--electric-blue), 0 0 30px var(--electric-blue);
-    transform: scale(1.05);
-}
-
-.neon-btn.secondary:hover {
-    color: var(--bg-dark);
-    background: var(--magenta-neon);
-    box-shadow: 0 0 15px var(--magenta-neon), 0 0 25px var(--magenta-neon);
-}
-
-.neon-btn.magenta-glow {
-    color: var(--bg-dark);
-    background: var(--magenta-neon);
-    box-shadow: var(--shadow-magenta);
-}
-
-/* SECCIÓN HERO */
-.hero-section {
-    min-height: 80vh;
+.logo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 0.9;
+    transform: skewX(-12deg);
+    font-style: italic;
+}
+
+.logo-parking {
+    font-size: 2.5rem;
+    color: #00ffff;
+    text-shadow: 
+        0 0 3px #00ffff,
+        0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.logo-neon {
+    font-size: 2.5rem;
+    color: #00ffff;
+    text-shadow: 
+        0 0 3px #00ffff,
+        0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.logo-tm {
+    font-size: 1.1rem;
+    vertical-align: super;
+    margin-left: 3px;
+}
+
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 
+            0 0 3px #00ffff,
+            0 0 6px rgba(0, 255, 255, 0.4);
+    }
+    100% {
+        text-shadow: 
+            0 0 5px #00ffff,
+            0 0 10px rgba(0, 255, 255, 0.6);
+    }
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1.5rem;
     align-items: center;
-    text-align: center;
-    padding: 50px 20px;
 }
 
-.hero-title {
-    font-size: 3em;
-    color: var(--text-light);
-    text-shadow: 0 0 10px var(--electric-blue), 0 0 20px rgba(0, 255, 255, 0.5);
-    max-width: 800px;
-    margin-bottom: 20px;
+.btn-comenzar {
+    margin-left: 1rem;
 }
 
-.hero-subtitle {
-    font-size: 1.2em;
-    color: var(--text-general);
-    max-width: 600px;
-    margin-bottom: 40px;
-}
-
-.cta-button.large {
-    font-size: 1.3em;
-    padding: 18px 40px;
-}
-
-/* Efecto visual futurista (Simulando la imagen del auto) */
-.hero-visual {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, rgba(0, 255, 255, 0.2), transparent);
-    z-index: -1;
-    overflow: hidden;
-}
-
-.neon-car-effect {
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    right: 10%;
-    height: 15px;
-    background-color: var(--magenta-neon);
-    box-shadow: 0 0 20px var(--magenta-neon), 0 0 40px var(--magenta-neon);
-    clip-path: polygon(0% 100%, 100% 100%, 80% 0%, 20% 0%); /* Forma de carretera/pista */
-    opacity: 0.5;
-    animation: pulse 4s infinite alternate;
-}
-
-@keyframes pulse {
-    from {
-        opacity: 0.3;
-        transform: scaleX(0.98);
-    }
-    to {
-        opacity: 0.6;
-        transform: scaleX(1.02);
-    }
-}
-
-/* SECCIÓN DE CARACTERÍSTICAS */
-.features-section {
-    padding: 80px 40px;
-    background-color: rgba(0, 0, 0, 0.3);
-    text-align: center;
-    border-top: 1px solid rgba(0, 255, 255, 0.1);
-}
-
-.section-title {
-    font-size: 2em;
-    color: var(--electric-blue);
-    text-shadow: 0 0 5px var(--electric-blue);
-    margin-bottom: 50px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid var(--magenta-neon);
-    box-shadow: 0 0 8px rgba(255, 0, 255, 0.4);
-    transition: all 0.3s;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px var(--electric-blue), 0 0 25px rgba(0, 255, 255, 0.5);
-}
-
-.feature-card h4 {
-    color: var(--text-light);
-    font-size: 1.3em;
-    margin-top: 10px;
-}
-
-.feature-card i {
-    font-size: 2em;
-    color: var(--electric-blue);
-    text-shadow: 0 0 5px var(--electric-blue);
-}
-
-/* FOOTER */
-.footer-neon {
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid rgba(255, 0, 255, 0.2);
-    background-color: rgba(0, 0, 0, 0.6);
-    font-size: 0.85em;
-    color: #888;
-}
-
-.footer-links a {
-    color: var(--magenta-neon);
+.btn {
+    padding: 0.6rem 1.8rem;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
+    display: inline-block;
 }
 
-.footer-links a:hover {
-    color: var(--electric-blue);
+.btn-register,
+.btn-login {
+    background: transparent;
+    color: #00ffff;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
-/* ================================================= */
-/* RESPONSIVE DESIGN (Media Queries) */
-/* ================================================= */
-
-/* TABLET */
-@media (max-width: 992px) {
-    .header-landing {
-        padding: 15px 20px;
-    }
-    
-    .nav-links {
-        display: none; /* Oculta los links de navegación en tabletas pequeñas para ahorrar espacio */
-    }
-
-    .hero-title {
-        font-size: 2.5em;
-    }
-
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
-    }
+.btn-register:hover,
+.btn-login:hover {
+    background: #00ffff;
+    color: #0f1419;
+    box-shadow: 
+        0 0 20px #00ffff,
+        0 0 30px #00ffff,
+        0 0 40px #00ffff;
+    transform: translateY(-2px);
 }
 
-/* MÓVIL */
+.btn-comenzar {
+    background: linear-gradient(135deg, #ff006e 0%, #ff1b8d 100%);
+    color: white;
+    border: 2px solid #ff006e;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 110, 0.5),
+        0 0 30px rgba(255, 0, 110, 0.3);
+}
+
+.btn-comenzar:hover {
+    background: linear-gradient(135deg, #ff1b8d 0%, #ff006e 100%);
+    box-shadow: 
+        0 0 25px #ff006e,
+        0 0 40px #ff006e,
+        0 0 60px #ff006e;
+    transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
-    .header-landing {
+    header {
         flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        gap: 2rem;
+        padding: 1.5rem;
     }
 
-    .header-actions {
-        width: 100%;
-        justify-content: space-around;
-    }
-    
-    .cta-button.small {
-        padding: 8px 15px;
+    .logo-parking,
+    .logo-neon {
+        font-size: 2rem;
     }
 
-    .hero-title {
-        font-size: 2em;
+    .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .hero-subtitle {
-        font-size: 1em;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr; /* 1 columna en móvil */
-    }
-    
-    .features-section {
-        padding: 40px 20px;
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
