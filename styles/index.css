@@ -4,7 +4,7 @@
     --electric-blue: #00ffff; 
     --magenta-neon: #ff00ff; 
     --text-light: #f0f0f0;
-    --text-general: #ccc;
+    --text-general: #ccc; 
     
     --shadow-electric: 0 0 5px var(--electric-blue), 0 0 15px var(--electric-blue);
     --shadow-magenta: 0 0 5px var(--magenta-neon), 0 0 15px var(--magenta-neon);
