@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* CONTAINER PRINCIPAL */
+.register-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    max-width: 1400px;
+    width: 100%;
+    background: rgba(15, 15, 35, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 255, 255, 0.2);
+}
+
+/* LADO IZQUIERDO - BRANDING */
+.register-branding {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 0.9;
+    transform: skewX(-12deg);
+    font-style: italic;
+    margin-bottom: 3rem;
+}
+
+.logo-parking {
+    font-size: 3rem;
+    color: #00ffff;
+    text-shadow: 
+        0 0 3px #00ffff,
+        0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.logo-neon {
+    font-size: 3rem;
+    color: #00ffff;
+    text-shadow: 
+        0 0 3px #00ffff,
+        0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.logo-tm {
+    font-size: 1.2rem;
+    vertical-align: super;
+    margin-left: 3px;
+}
+
+.branding-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.highlight-cyan {
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.branding-text {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    min-width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Decoración */
+.decoration-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.circle {
+    position: absolute;
+    border: 2px solid rgba(0, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -100px;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -50px;
+    border-color: rgba(255, 0, 110, 0.1);
+}
+
+.circle-3 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 30%;
+    border-color: rgba(0, 255, 255, 0.05);
+}
+
+/* LADO DERECHO - FORMULARIO */
+.register-form-container {
+    padding: 3rem;
+    background: rgba(20, 20, 40, 0.5);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-header h1 {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: #b0b0b0;
+    font-size: 1rem;
+}
+
+/* FORMULARIO */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.label-icon {
+    font-size: 1.2rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input::placeholder {
+    color: #808080;
+}
+
+/* Input con error */
+.form-group input.error {
+    border-color: #ff006e;
+    box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+}
+
+/* Input válido */
+.form-group input.valid {
+    border-color: #00ff88;
+}
+
+/* Wrapper para contraseña con botón */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 3rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    transition: transform 0.2s ease;
+}
+
+.toggle-password:hover {
+    transform: scale(1.1);
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #ff006e;
+    font-size: 0.85rem;
+    display: none;
+    margin-top: 0.3rem;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Requisitos de contraseña */
+.password-requirements {
+    margin-top: 0.8rem;
+    padding: 1rem;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.requirements-title {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #808080;
+    margin: 0.3rem 0;
+    transition: color 0.3s ease;
+}
+
+.req-icon {
+    font-size: 1rem;
+}
+
+.requirement.met {
+    color: #00ff88;
+}
+
+.requirement.met .req-icon {
+    color: #00ff88;
+}
+
+.requirement.met .req-icon::before {
+    content: "●";
+}
+
+/* Checkbox */
+.checkbox-group {
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    min-width: 22px;
+    height: 22px;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    background: #00ffff;
+    border-color: #00ffff;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: "✓";
+    color: #0f1419;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.checkbox-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Links */
+.link {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.link:hover {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Botón de envío */
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ff006e 0%, #ff1b8d 100%);
+    border: 2px solid #ff006e;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Saira Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Footer del formulario */
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.form-footer p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .register-container {
+        grid-template-columns: 1fr;
+    }
+
+    .register-branding {
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .logo-parking,
+    .logo-neon {
+        font-size: 2.5rem;
+    }
+
+    .branding-title {
+        font-size: 1.5rem;
+    }
+
+    .decoration-circles {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .register-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 2rem;
+    }
+
+    .register-branding {
+        display: none;
+    }
+}
+
+/* Scrollbar personalizado */
+.register-form-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.register-form-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.register-form-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.register-form-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.5);
+}
