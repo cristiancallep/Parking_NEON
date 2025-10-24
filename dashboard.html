@@ -26,7 +26,7 @@
         <main class="dashboard-main">
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn-action btn-entrada">
+                <button class="btn-action btn-entrada" onclick="window.location.href='registrar-entrada.html'">
                     <span class="btn-text">Registrar Entrada de Vehículo</span>
                     <svg class="btn-icon" viewBox="0 0 485.209 485.208" fill="currentColor">
                         <g>
@@ -44,11 +44,11 @@
                                 C115.901,286.77,97.399,268.264,74.57,268.264z"/>
                             <path d="M421.728,268.264c-22.813,0-41.32,18.506-41.32,41.328c0,3.855,0.697,7.506,1.679,11.049
                                 c4.854,17.424,20.667,30.28,39.642,30.28c19.865,0,36.432-14.026,40.403-32.705c0.589-2.781,0.926-5.654,0.926-8.616
-                                C463.057,286.77,444.55,268.264,421.728,268.264z"/>
+                                C463.057,286.70,444.55,268.264,421.728,268.264z"/>
                         </g>
                     </svg>
                 </button>
-                <button class="btn-action btn-salida">
+                <button class="btn-action btn-salida" onclick="window.location.href='registrar-salida.html'">
                     <span class="btn-text">Registrar Salida / Cobrar</span>
                     <span class="btn-icon">$</span>
                 </button>
@@ -102,5 +102,71 @@
             <div class="diamond-shape"></div>
         </div>
     </div>
+
+    <!-- Modal de confirmación de cerrar sesión -->
+    <div id="logoutModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Cerrar Sesión</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message">¿Estás seguro que deseas cerrar sesión?</p>
+                <p class="modal-submessage">Se perderán los datos no guardados</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelLogout" class="btn-modal btn-cancel">Cancelar</button>
+                <button id="confirmLogout" class="btn-modal btn-confirm">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Referencias a elementos del modal
+        const logoutBtn = document.querySelector('.btn-logout');
+        const modal = document.getElementById('logoutModal');
+        const cancelBtn = document.getElementById('cancelLogout');
+        const confirmBtn = document.getElementById('confirmLogout');
+
+        // Mostrar modal al hacer clic en cerrar sesión
+        logoutBtn.addEventListener('click', function() {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+        });
+
+        // Ocultar modal al cancelar
+        cancelBtn.addEventListener('click', function() {
+            hideModal();
+        });
+
+        // Cerrar modal al hacer clic fuera de él
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+
+        // Confirmar cerrar sesión
+        confirmBtn.addEventListener('click', function() {
+            // Limpiar datos de sesión (si los hay)
+            localStorage.removeItem('userSession');
+            sessionStorage.clear();
+            
+            // Redirigir al index
+            window.location.href = 'index.html';
+        });
+
+        // Función para ocultar modal
+        function hideModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = ''; // Restaurar scroll
+        }
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                hideModal();
+            }
+        });
+    </script>
 </body>
 </html>
