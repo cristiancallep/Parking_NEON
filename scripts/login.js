@@ -5,12 +5,12 @@ const passwordInput = document.getElementById('password');
 const togglePasswordBtn = document.getElementById('togglePassword');
 const rememberCheckbox = document.getElementById('remember');
 
-// Toggle mostrar/ocultar contraseña
-togglePasswordBtn.addEventListener('click', () => {
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-    togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
-});
+// // Toggle mostrar/ocultar contraseña
+// togglePasswordBtn.addEventListener('click', () => {
+//     const type = passwordInput.type === 'password' ? 'text' : 'password';
+//     passwordInput.type = type;
+//     togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+// });
 
 // Funciones de validación
 function showError(input, message) {
