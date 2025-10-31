@@ -107,7 +107,6 @@ body {
 }
 
 .feature-icon {
-    font-size: 1.5rem;
     min-width: 40px;
     height: 40px;
     background: rgba(0, 255, 255, 0.1);
@@ -116,6 +115,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.feature-icon .icon-neon {
+    width: 24px;
+    height: 24px;
+    stroke: #00ffff;
+    stroke-width: 2;
+    fill: none;
+    filter: drop-shadow(0 0 3px #00ffff) drop-shadow(0 0 6px rgba(0, 255, 255, 0.5));
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover .icon-neon {
+    filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
+    transform: scale(1.1);
 }
 
 /* Decoración */
