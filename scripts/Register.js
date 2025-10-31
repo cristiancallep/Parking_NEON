@@ -29,7 +29,7 @@ if (togglePasswordBtn) {
         // Cambiar el ícono SVG si existe, si no usar texto/emoji como fallback
         const imgIcon = togglePasswordBtn.querySelector('img');
         if (imgIcon) {
-            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.src = type === 'password' ? '../assets/eye-icon.svg' : '../assets/eye-closed.svg';
             imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
         } else {
             togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
@@ -44,7 +44,7 @@ if (toggleConfirmPasswordBtn) {
 
         const imgIcon = toggleConfirmPasswordBtn.querySelector('img');
         if (imgIcon) {
-            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.src = type === 'password' ? '../assets/eye-icon.svg' : '../assets/eye-closed.svg';
             imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
         } else {
             toggleConfirmPasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';

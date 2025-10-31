@@ -13,7 +13,7 @@ if (togglePasswordBtn) {
 
         const imgIcon = togglePasswordBtn.querySelector('img');
         if (imgIcon) {
-            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.src = type === 'password' ? '../assets/eye-icon.svg' : '../assets/eye-closed.svg';
             imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
         } else {
             // fallback emoji
@@ -155,8 +155,8 @@ function loginUser(data) {
             localStorage.removeItem('rememberUser');
         }
 
-        // Redirigir directamente al dashboard (ruta absoluta)
-        window.location.href = '/views/dashboard.html';
+        // Redirigir directamente al dashboard (ruta relativa)
+        window.location.href = 'dashboard.html';
 
         // En caso de que la redirección no ocurra inmediatamente, restauramos el botón
         submitBtn.disabled = false;
