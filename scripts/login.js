@@ -5,12 +5,22 @@ const passwordInput = document.getElementById('password');
 const togglePasswordBtn = document.getElementById('togglePassword');
 const rememberCheckbox = document.getElementById('remember');
 
-// // Toggle mostrar/ocultar contraseña
-// togglePasswordBtn.addEventListener('click', () => {
-//     const type = passwordInput.type === 'password' ? 'text' : 'password';
-//     passwordInput.type = type;
-//     togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
-// });
+// Toggle mostrar/ocultar contraseña (guarded, con manejo de <img> y fallback)
+if (togglePasswordBtn) {
+    togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+
+        const imgIcon = togglePasswordBtn.querySelector('img');
+        if (imgIcon) {
+            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
+        } else {
+            // fallback emoji
+            togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        }
+    });
+}
 
 // Funciones de validación
 function showError(input, message) {
@@ -107,10 +117,10 @@ form.addEventListener('submit', (e) => {
     if (isEmailValid && isPasswordValid) {
         // Recopilar datos del formulario
         const formData = {
-            email: emailInput.value.trim(),
-            password: passwordInput.value,
-            remember: rememberCheckbox.checked
-        };
+                email: emailInput.value.trim(),
+                password: passwordInput.value,
+                remember: rememberCheckbox ? rememberCheckbox.checked : false
+            };
         
         console.log('Formulario válido. Datos:', formData);
         
@@ -137,21 +147,21 @@ function loginUser(data) {
     setTimeout(() => {
         // Simulación de login exitoso
         console.log('Login exitoso con:', data);
-        
-        // Guardar sesión si "recordarme" está activado
+
+        // Guardar o limpiar sesión si "recordarme" está activado
         if (data.remember) {
             localStorage.setItem('rememberUser', data.email);
+        } else {
+            localStorage.removeItem('rememberUser');
         }
-        
-        alert('¡Inicio de sesión exitoso! Redirigiendo al dashboard...');
-        
-        // Aquí rediriges al dashboard
-        // window.location.href = 'dashboard.html';
-        
-        // Restaurar botón
+
+        // Redirigir directamente al dashboard (ruta absoluta)
+        window.location.href = '/views/dashboard.html';
+
+        // En caso de que la redirección no ocurra inmediatamente, restauramos el botón
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<span>Iniciar Sesión</span>';
-        
+
     }, 1500);
 }
 
@@ -160,7 +170,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedEmail = localStorage.getItem('rememberUser');
     if (savedEmail) {
         emailInput.value = savedEmail;
-        rememberCheckbox.checked = true;
+        if (rememberCheckbox) rememberCheckbox.checked = true;
     }
 });
 

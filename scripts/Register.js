@@ -20,18 +20,37 @@ const requirements = {
     special: document.getElementById('req-special')
 };
 
-// Toggle mostrar/ocultar contraseña
-togglePasswordBtn.addEventListener('click', () => {
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-    togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
-});
+// Toggle mostrar/ocultar contraseña (con guards y fallback si no hay <img>)
+if (togglePasswordBtn) {
+    togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
 
-toggleConfirmPasswordBtn.addEventListener('click', () => {
-    const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
-    confirmPasswordInput.type = type;
-    toggleConfirmPasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
-});
+        // Cambiar el ícono SVG si existe, si no usar texto/emoji como fallback
+        const imgIcon = togglePasswordBtn.querySelector('img');
+        if (imgIcon) {
+            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
+        } else {
+            togglePasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        }
+    });
+}
+
+if (toggleConfirmPasswordBtn) {
+    toggleConfirmPasswordBtn.addEventListener('click', () => {
+        const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+        confirmPasswordInput.type = type;
+
+        const imgIcon = toggleConfirmPasswordBtn.querySelector('img');
+        if (imgIcon) {
+            imgIcon.src = type === 'password' ? '/assets/eye-icon.svg' : '/assets/eye-closed.svg';
+            imgIcon.alt = type === 'password' ? 'Ver contraseña' : 'Ocultar contraseña';
+        } else {
+            toggleConfirmPasswordBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        }
+    });
+}
 
 // Validación en tiempo real de la contraseña
 passwordInput.addEventListener('input', () => {
@@ -227,6 +246,8 @@ function validateConfirmPassword() {
 }
 
 function validateTerms() {
+    // Si el checkbox no existe en el DOM (está comentado en el HTML), considerar válido
+    if (!termsCheckbox) return true;
     if (!termsCheckbox.checked) {
         showError(termsCheckbox, 'Debes aceptar los términos y condiciones');
         return false;
@@ -243,7 +264,9 @@ direccionInput.addEventListener('blur', validateDireccion);
 emailInput.addEventListener('blur', validateEmail);
 passwordInput.addEventListener('blur', validatePassword);
 confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
-termsCheckbox.addEventListener('change', validateTerms);
+if (termsCheckbox) {
+    termsCheckbox.addEventListener('change', validateTerms);
+}
 direccionInput.addEventListener('blur', validateDireccion);
 emailInput.addEventListener('blur', validateEmail);
 passwordInput.addEventListener('blur', validatePassword);
@@ -286,11 +309,13 @@ confirmPasswordInput.addEventListener('input', () => {
     }
 });
 
-termsCheckbox.addEventListener('change', () => {
-    if (termsCheckbox.checked) {
-        clearError(termsCheckbox);
-    }
-});
+if (termsCheckbox) {
+    termsCheckbox.addEventListener('change', () => {
+        if (termsCheckbox.checked) {
+            clearError(termsCheckbox);
+        }
+    });
+}
 
 // Manejo del envío del formulario
 form.addEventListener('submit', (e) => {
@@ -349,13 +374,13 @@ function submitForm(data) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>Creando cuenta...</span>';
     
-    // Simular petición al servidor
-    setTimeout(() => {
-        // Simulación de registro exitoso
-        alert('¡Cuenta creada exitosamente! Bienvenido a Parking Neon');
-        
-        // Aquí rediriges al dashboard o login
-        // window.location.href = 'dashboard.html';
+    // // Simular petición al servidor
+    // setTimeout(() => {
+    // // Simulación de registro exitoso
+    // alert('¡Cuenta creada exitosamente! Bienvenido a Parking Neon');
+
+    // Redirigir al login (solo si el formulario fue válido y el registro simulado fue exitoso)
+    window.location.href = 'login.html';
         
         // Restaurar botón
         submitBtn.disabled = false;
@@ -375,7 +400,7 @@ function submitForm(data) {
             req.classList.remove('met');
         });
         
-    }, 2000);
+    // }, 2000);
 }
 
 // Prevenir pegado en el campo de confirmar contraseña
