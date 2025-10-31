@@ -218,7 +218,7 @@ function validateConfirmPassword() {
     }
      
     if (password !== confirmPassword) {
-        showError(confirmPasswordInputshowError, 'Las contraseñas no coinciden');
+        showError(confirmPasswordInput, 'Las contraseñas no coinciden');
         return false;
     }
     
@@ -239,6 +239,11 @@ function validateTerms() {
 nombreInput.addEventListener('blur', validateNombre);
 apellidosInput.addEventListener('blur', validateApellidos);
 telefonoInput.addEventListener('blur', validateTelefono);
+direccionInput.addEventListener('blur', validateDireccion);
+emailInput.addEventListener('blur', validateEmail);
+passwordInput.addEventListener('blur', validatePassword);
+confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
+termsCheckbox.addEventListener('change', validateTerms);
 direccionInput.addEventListener('blur', validateDireccion);
 emailInput.addEventListener('blur', validateEmail);
 passwordInput.addEventListener('blur', validatePassword);
