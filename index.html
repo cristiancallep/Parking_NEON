@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-   <header>
-    <div class="logo">
-        <div class="logo-parking">PARKING</div>
-        <div class="logo-neon">NEON<span class="logo-tm">™</span></div>
-    </div>
-    
-    <nav class="nav-buttons">
-        <a href="views/register.html" class="btn btn-register">Registro</a> 
-        <a href="views/login.html" class="btn btn-register">Iniciar sesion</a> 
-        <button class="btn btn-comenzar">Comenzar</button>
-    </nav>
-</header>
+    <header>
+        <div class="logo">
+            <div class="logo-parking">PARKING</div>
+            <div class="logo-neon">NEON<span class="logo-tm">™</span></div>
+        </div>
+        
+        <nav class="nav-buttons">
+            <button class="btn btn-register">Register</button>
+            <button class="btn btn-login">Login</button>
+            <button class="btn btn-comenzar" onclick="window.location.href='dashboard.html'">Comenzar</button>
+        </nav>
+    </header>
 
     <section class="hero">
         <div class="hero-content">
@@ -32,7 +32,8 @@
                 Digitaliza tu parqueadero de barrio con tecnología moderna y eficiente.
             </p>
             <div class="hero-buttons">
-                <button class="btn-hero btn-hero-primary">Comenzar Ahora</button>
+                <button class="btn-hero btn-hero-primary" onclick="window.location.href='dashboard.html'">Comenzar Ahora</button>
+                <button class="btn-hero btn-hero-secondary">Ver Demo</button>
             </div>
         </div>
         <div class="hero-image">
@@ -250,7 +251,7 @@
             <p class="cta-description">
                 Únete a los parqueaderos que ya confían en tecnología para crecer
             </p>
-            <button class="btn-hero btn-hero-primary large">Comenzar Gratis</button>
+            <button class="btn-hero btn-hero-primary large" onclick="window.location.href='dashboard.html'">Comenzar Gratis</button>
         </div>
     </section>
 
